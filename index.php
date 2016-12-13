@@ -2,18 +2,18 @@
 <html lang="en" ng-app="miningCalc" ng-controller="data">
 <head>
     <meta charset="UTF-8">
-    <title>Ethereum Mining Calculator</title>
-    <meta name="description" content="An easy to use crypto-currency finance utility used to calculate a Ethereum miner's potential profits in ETH and multiple fiat
+    <title>Ethereum Classic Mining Calculator</title>
+    <meta name="description" content="An easy to use crypto-currency finance utility used to calculate a Ethereum Classic miner's potential profits in ETC and multiple fiat
                                 currencies. The calculator fetches price and network data from the internet
                                     and only requires the hash rate (speed of mining) from the user. A projected future profit
                                     chart is created dynamically and displayed instantly.">
-    <meta name="keywords" content="Ethereum,Mining,Profitability,Calculator,AngularJS,nodeJS,finance,currency,cryptocurrency,money,bitcoin">
+    <meta name="keywords" content="Ethereum,Classic,Mining,Profitability,Calculator,AngularJS,nodeJS,finance,currency,cryptocurrency,money,bitcoin">
     <meta name="author" content="Karl Diab">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-route.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app1.js"></script>
     <script src="js/Chart.min.js"></script>
     <link rel="stylesheet" href="css/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -40,10 +40,10 @@
                     ?>
                     <!-- CALC START--> 
                             <div id="header">
-                                <div id="bigTitle"><h2><img src="images/EthereumLogo.png" style="position: relative; bottom: 4px;">Ethereum Mining Calculator</h2></div>
-                                <div id="smallTitle"><h4><img src="images/EthereumLogo.png" style="position: relative; bottom: 4px; height: 25px; width: 25px;">Ethereum Mining Calculator</h4></div>
+                                <div id="bigTitle"><h2><img src="images/EthereumClassicLogo.png" style="position: relative; bottom: 4px;">Ethereum Classic Mining Calculator</h2></div>
+                                <div id="smallTitle"><h4><img src="images/EthereumClassicLogo.png" style="position: relative; bottom: 4px; height: 25px; width: 25px;">Ethereum Classic Mining Calculator</h4></div>
                                 <div  id="infoMessage">
-                                    <p>Now more accurate*</p>
+                                    <p>Now with LIVE stats!</p>
                                 </div>
                             </div>
                             <div id="desktopAdBanner">
@@ -88,7 +88,7 @@
                                                 <td><input type="number" ng-model="difficulty" ng-change="computeProfits(); turnAutoUpdateOff()"/> Trillion</td>
                                             </tr>
                                             <tr>
-                                                <th>ETH Price:</th>
+                                                <th>ETC Price:</th>
                                                 <td><input type="number" ng-model="price" ng-change="computeProfits(); turnAutoUpdateOff()"/>
                                                     <select ng-model="currency" ng-change="calculatePrice()">
                                                     <option value="USD" ng-init="currencyCode = 'USD'">USD</option>
@@ -140,7 +140,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Period</th>
-                                                    <th>ETH</th>
+                                                    <th>ETC</th>
                                                     <th>{{currency}}</th>
                                                     <th>Power Cost ({{currency}})</th>
                                                     <th>Pool Fees ({{currency}})</th>
@@ -227,15 +227,13 @@
                                 <h4>Notes</h4>
                                 <ul>
                                     <li ng-show="dynamicDiffWarning" style="color: red;"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Diff Change value is very large. Future profitability estimates may be inaccurate. Consider making Diff Change smaller or turning off Dynamic Difficulty.</li>
-                                    <li>*Calculator was too optimistic, so I changed some calculation parameters. Now the results closely match actual earnings from the major pools.</li>
-                                    <li><a href="https://etherchain.org/account/0x3D1e9a8704449F271A93392Ff06e0284e2d86769">Donation Address</a></li>
                                     <li>Do you find this calculator accurate/inaccurate or have a question or comment? Send me an email, link below!</li>
-                                    <li>The utility fetches live Ethereum network & price data from a nodeJS backend and foreign currency rates from www.coinmarketcap.com</li>
+                                    <li>The utility fetches live Ethereum Classic network & price data from a nodeJS backend and foreign currency rates from www.coinmarketcap.com</li>
                             </div>
                             <div id="authorInfo">
                                 <a href="http://www.karldiab.com"><button class="btn btn-success btn-sm">Website</button></a>
                                 <a href='&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#107;&#97;&#114;&#108;&#64;&#107;&#97;&#114;&#108;&#100;&#105;&#97;&#98;&#46;&#99;&#111;&#109;'><button class="btn btn-primary btn-sm">Email</button></a>
-                                <a href="https://github.com/karldiab/EthereumMiningCalculator"><button class="btn btn-danger btn-sm">Source Code</button></a>
+                                <a href="https://github.com/karldiab/EthereumClassicMiningCalculator"><button class="btn btn-danger btn-sm">Source Code</button></a>
                             </div>
                     <!-- CALCEND-->        
                     <?php 

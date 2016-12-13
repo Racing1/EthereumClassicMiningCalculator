@@ -2,7 +2,7 @@ var app = angular.module("miningCalc", ['ngRoute']);
 
 
 app.factory('socket', ['$rootScope', function($rootScope) {
-  var socket = io.connect("http://144.217.85.254:1235/ETH");
+  var socket = io.connect("http://144.217.85.254:1235/ETC");
   //var socket = io.connect("http://localhost:1235");
 
   return {
@@ -17,6 +17,7 @@ app.factory('socket', ['$rootScope', function($rootScope) {
 
 
 app.controller("data", function data($scope, $http, socket) {
+    $scope.diffChangeWarningThreshold = 0.3;
     $scope.dynamicDifficulty = true;
     $scope.dynamicDifficultyString = "On";
     $scope.autoUpdate = true;
@@ -165,14 +166,14 @@ app.controller("data", function data($scope, $http, socket) {
                 $scope.profit[i] =  parseFloat($scope.profit[i].toFixed(2));
                 if ($scope.dynamicDifficulty) {
                     if ($scope.diffChange > 0) {
-                        if ($scope.diffChange/$scope.difficulty > 0.25) { 
+                        if ($scope.diffChange/$scope.difficulty > $scope.diffChangeWarningThreshold) { 
                             projectedDifficulty += $scope.diffChange;
                             $scope.dynamicDiffWarning = true;
                         } else {
                             projectedDifficulty += $scope.diffChange;
                             $scope.dynamicDiffWarning = false;
                         }
-                    } else if (-($scope.diffChange/$scope.difficulty) > 0.25) {
+                    } else if (-($scope.diffChange/$scope.difficulty) > $scope.diffChangeWarningThreshold) {
                         projectedDifficulty *= 1 + $scope.diffChange/$scope.difficulty;
                         $scope.dynamicDiffWarning = true;
                     } else {
